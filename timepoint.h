@@ -7,17 +7,17 @@ class TimePoint
         unsigned long long min;
         unsigned long long sec;
 
-        TimePoint summaring(TimePoint second);
+    bool compare(TimePoint moment, double* answ);
 
-        TimePoint difference(TimePoint second);
+    TimePoint secadding(long long addsec);
 
-        TimePoint secadding(unsigned long long addsec);
+    TimePoint secdiff(long long diffsec);
 
-        TimePoint minadding(unsigned long long addmin);
+    TimePoint minadding(long long addmin);
 
-        long long trans_to_sec();
+    long long trans_to_sec();
 
-        long long trans_to_min();
+    long long trans_to_min();
 
 };
 TimePoint operator + (TimePoint first, TimePoint second);

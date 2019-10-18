@@ -1,34 +1,64 @@
 #include <iostream>
 #include <cmath>
 #include "timepoint.h"
-
-        TimePoint TimePoint::secadding(unsigned long long addsec)
+        TimePoint TimePoint::secadding(long long addsec)
         {
-            this->hours = 0, this->min = 0, this->sec = 0;
-            this->sec = addsec % 60;
-            this->min = (addsec / 60) % 60;
-            this->hours = addsec / 3600;
+            this->sec += addsec % 60;
+            this->min += (addsec / 60) % 60;
+            this->hours += addsec / 3600;
+            if (this->sec >= 60) {
+                this->sec = this->sec % 60;
+                this->min += 1;
+            }
+            if (this->min >= 60) {
+                this->min = this->min % 60;
+                this->hours += 1;
+            }
+            this->hours = this->hours % 24;
         }
-        TimePoint TimePoint::minadding(unsigned long long addmin)
+        TimePoint TimePoint::secdiff(long long diffsec)
         {
-            this->hours = 0, this->min = 0, this->sec = 0;
-            if ((addmin / 60) > 1) {
-                this->min = addmin % 60;
-                this->hours = addmin / 60;
+            this->sec -= diffsec;
+            if (this->sec < 0) {
+                this->min -= 1;
+                this->min -= diffsec / 60;
+                this->sec = this->sec % 60 + 60;
             }
-            else {
-                this->sec = addmin;
+            if (this->min < 0) {
+                this->hours -= diffsec / 3600;
+                this->min = this->min % 60 + 60;
             }
+            this->sec = this->sec % 60;
+            this->min = this->min % 60;
+            this->hours = abs(this->hours % 24);
+        }
+        TimePoint TimePoint::minadding(long long addmin)
+        {
+            this->min += addmin % 60;
+            this->hours += addmin / 60;
+            if (this->min >= 60) {
+                this->min = this->min % 60;
+                this->hours += 1;
+            }
+            this->hours = this->hours % 24;
+        }
+        bool TimePoint::compare(TimePoint moment, double* answ) {
+            long long a = this->trans_to_sec();
+            long long b = moment.trans_to_sec();
+            *answ = double(a) / double(b);
+            return a > b;
         }
         long long TimePoint::trans_to_sec() {
-            this->min = this->hours + this->min;
-            this->sec = this->min * 60 + this->sec;
+            this->min = (this->hours * 60) + this->min;
+            this->sec = (this->min * 60) + this->sec;
+            return this->sec;
         }
         long long TimePoint::trans_to_min() {
-            this->min = this->hours * 60 + this->min;
+            this->min = (this->hours * 60) + this->min;
             if (this->sec >= 30) {
                 this->min += 1;
             }
+            return this -> min;
         }
         TimePoint operator + (TimePoint first, TimePoint second) {
           first.sec += second.sec;

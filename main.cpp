@@ -34,20 +34,18 @@ int main()
         std::cin >> moment;
         std::cout << "Введите количество секунд: ";
         std::cin >> addsec;
-        res.secadding(addsec);
-        res = res + moment;
-        std::cout << res;
+        moment.secadding(addsec);
+        std::cout << moment;
     }
     if (npt == "4") {
         std::cout << "Ввод осуществляется в формате час:минута:секунда\nВведите момент времени: ";
         TimePoint moment;
         std::cin >> moment;
-        unsigned long long addsec;
+        unsigned long long diffsec;
         std::cout << "Введите количество секунд: ";
-        std::cin >> addsec;
-        res.secadding(addsec);
-        res = res - moment;
-        std::cout << res;
+        std::cin >> diffsec;
+        moment.secdiff(diffsec);
+        std::cout << moment;
     }
     if (npt == "5") {
         std::cout << "Ввод осуществляется в формате час:минута:секунда\nВведите первый момент времени: ";
@@ -57,17 +55,14 @@ int main()
         std::cout << "Введите второй момент времени: ";
         TimePoint second;
         std::cin >> second;
-        long long a = 0;
-        long long b = 0;
-        a = first.trans_to_sec();
-        b = second.trans_to_sec();
-        if ((a / b) > 0) {
-            answ = double(a) / double(b);
+        if (first.compare(second, &answ) && answ != 1) {
             std::cout << "Первый момент больше второго в " << answ << " раз\n";
         }
+        else if (answ == 1) {
+            std::cout << "Они равны\n";
+        }
         else {
-          answ = double(b) / double(a);
-          std::cout << "Первый момент меньше второго в " << answ << " раз\n";
+            std::cout << "Первый момент меньше второго в " << answ << " раз\n";
         }
     }
 
@@ -120,8 +115,6 @@ int main()
         std::cout << res;
     }
     if (npt == "11") {
-        unsigned long long input;
-        std::cin >> input;
-        std::cout << input_mult;
+        std::cout << 42_mult;
     }
 }

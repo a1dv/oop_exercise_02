@@ -9,11 +9,11 @@ class TimePoint
 
     bool compare(TimePoint moment, double* answ);
 
-    TimePoint secadding(long long addsec);
+    void secadding(long long addsec);
 
-    TimePoint secdiff(long long diffsec);
+    void secdiff(long long diffsec);
 
-    TimePoint minadding(long long addmin);
+    void minadding(long long addmin);
 
     long long trans_to_sec();
 

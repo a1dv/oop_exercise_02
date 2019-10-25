@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include "timepoint.h"
-        TimePoint TimePoint::secadding(long long addsec)
+        void TimePoint::secadding(long long addsec)
         {
             this->sec += addsec % 60;
             this->min += (addsec / 60) % 60;
@@ -16,7 +16,7 @@
             }
             this->hours = this->hours % 24;
         }
-        TimePoint TimePoint::secdiff(long long diffsec)
+        void TimePoint::secdiff(long long diffsec)
         {
             this->sec -= diffsec;
             if (this->sec < 0) {
@@ -32,7 +32,7 @@
             this->min = this->min % 60;
             this->hours = abs(this->hours % 24);
         }
-        TimePoint TimePoint::minadding(long long addmin)
+        void TimePoint::minadding(long long addmin)
         {
             this->min += addmin % 60;
             this->hours += addmin / 60;

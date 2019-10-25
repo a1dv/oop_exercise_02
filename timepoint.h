@@ -3,9 +3,9 @@
 class TimePoint
 {
     public:
-        unsigned long long hours;
-        unsigned long long min;
-        unsigned long long sec;
+        long long hours;
+        long long min;
+        long long sec;
 
     bool compare(TimePoint moment, double* answ);
 

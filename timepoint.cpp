@@ -89,19 +89,16 @@
 
         bool operator > (TimePoint first, TimePoint second)
         {
-            unsigned long long a, b;
             return first.sec + first.min * 60 + first.hours * 3600 > second.sec + second.min * 60 + second.hours * 3600;
         }
 
         bool operator < (TimePoint first, TimePoint second)
         {
-            unsigned long long a, b;
             return first.sec + first.min * 60 + first.hours * 3600 < second.sec + second.min * 60 + second.hours * 3600;;
         }
 
         bool operator == (TimePoint first, TimePoint second)
         {
-            unsigned long long a, b;
             return first.sec + first.min * 60 + first.hours * 3600 == second.sec + second.min * 60 + second.hours * 3600;
         }
         unsigned long long operator "" _mult(unsigned long long npt)

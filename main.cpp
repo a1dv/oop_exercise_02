@@ -30,7 +30,7 @@ int main()
     if (npt == "3") {
         std::cout << "Ввод осуществляется в формате час:минута:секунда\nВведите момент времени: ";
         TimePoint moment;
-        unsigned long long addsec;
+         long long addsec;
         std::cin >> moment;
         std::cout << "Введите количество секунд: ";
         std::cin >> addsec;
@@ -41,7 +41,7 @@ int main()
         std::cout << "Ввод осуществляется в формате час:минута:секунда\nВведите момент времени: ";
         TimePoint moment;
         std::cin >> moment;
-        unsigned long long diffsec;
+         long long diffsec;
         std::cout << "Введите количество секунд: ";
         std::cin >> diffsec;
         moment.secdiff(diffsec);
@@ -101,14 +101,14 @@ int main()
         std::cout << "Результат:\n" << answ << " минут ";
     }
     if (npt == "9") {
-        unsigned long long addsec;
+         long long addsec;
         std::cout << "Введите количество секунд: ";
         std::cin >> addsec;
         res.secadding(addsec);
         std::cout << res;
     }
     if (npt == "10") {
-        unsigned long long addmin;
+         long long addmin;
         std::cout << "Введите количество минут: ";
         std::cin >> addmin;
         res.minadding(addmin);

@@ -117,4 +117,31 @@ int main()
     if (npt == "11") {
         std::cout << 42_mult;
     }
+    if (npt == "12") {
+    TimePoint first;
+    TimePoint second;
+    long long addsec;
+    std::cin >> first;
+    std::cin >> second;
+    std::cin >> addsec;
+    res = first - second;
+    std::cout << res;
+    res = first + second;
+    std::cout << res;
+    res = first;
+    res.secadding(addsec);
+    std::cout << res;
+    res = first;
+    res.secdiff(addsec);
+    std::cout << res;
+    res = first;
+    res.minadding(addsec);
+    std::cout << res;
+    res = first;
+    std::cout << res.trans_to_min() << "\n";
+    res = first;
+    std::cout << res.trans_to_sec() << "\n";
+    res = first;
+    std::cout << res.trans_to_min() << "\n";
+}
 }

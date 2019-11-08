@@ -120,7 +120,7 @@
     std::ostream& operator<< (std::ostream &out, TimePoint &point)
     {
 
-        out << point.hours << " часов " << point.min << " минут " << point.sec << " секунд ";
+        out << point.hours << " часов " << point.min << " минут " << point.sec << " секунд\n";
 
         return out;
     }

@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 
 class TimePoint
@@ -7,7 +8,7 @@ class TimePoint
         long long min;
         long long sec;
 
-    bool compare(TimePoint moment, double* answ);
+    bool compare(TimePoint moment, double &answ);
 
     void secadding(long long addsec);
 

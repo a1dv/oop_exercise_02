@@ -55,7 +55,7 @@ int main()
         std::cout << "Введите второй момент времени: ";
         TimePoint second;
         std::cin >> second;
-        if (first.compare(second, &answ) && answ != 1) {
+        if (first.compare(second, answ) && answ != 1) {
             std::cout << "Первый момент больше второго в " << answ << " раз\n";
         }
         else if (answ == 1) {

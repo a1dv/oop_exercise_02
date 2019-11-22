@@ -42,10 +42,10 @@
             }
             this->hours = this->hours % 24;
         }
-        bool TimePoint::compare(TimePoint moment, double* answ) {
+        bool TimePoint::compare(TimePoint moment, double &answ) {
             long long a = this->trans_to_sec();
             long long b = moment.trans_to_sec();
-            *answ = double(a) / double(b);
+            answ = double(a) / double(b);
             return a > b;
         }
         long long TimePoint::trans_to_sec() {
@@ -72,19 +72,21 @@
 
         TimePoint operator - (TimePoint first, TimePoint second)
         {
-            first.sec -= second.sec;
-            if (first.sec < 0) {
-                first.min -= 1;
-                first.sec += 60;
-            }
-            first.min -= second.min;
-            if (first.min < 0) {
-                first.hours -= 1;
-                first.min += 60;
-            }
-            first.hours -= second.hours;
-            first.hours = abs(first.hours);
-            return first;
+          first.hours -= second.hours;
+          if (first.hours < 0) {
+              first.hours += 24;
+          }
+          first.min -= second.min;
+          if (first.min < 0) {
+              first.hours -=1;
+              first.min += 60;
+          }
+          first.sec -= second.sec;
+          if (first.sec < 0) {
+              first.min -= 1;
+              first.sec += 60;
+          }
+          return first;
         }
 
         bool operator > (TimePoint first, TimePoint second)

@@ -72,19 +72,19 @@
 
         TimePoint operator - (TimePoint first, TimePoint second)
         {
-          first.hours -= second.hours;
-          if (first.hours < 0) {
-              first.hours += 24;
+          first.sec -= second.sec;
+          if (first.sec < 0) {
+              first.min -= 1;
+              first.sec += 60;
           }
           first.min -= second.min;
           if (first.min < 0) {
               first.hours -=1;
               first.min += 60;
           }
-          first.sec -= second.sec;
-          if (first.sec < 0) {
-              first.min -= 1;
-              first.sec += 60;
+          first.hours -= second.hours;
+          if (first.hours < 0) {
+              first.hours += 24;
           }
           return first;
         }
